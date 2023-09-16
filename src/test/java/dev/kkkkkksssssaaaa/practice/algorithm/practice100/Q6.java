@@ -9,6 +9,8 @@ class Q6 {
     @Test
     void doTest() {
         assertEquals(6, solution(12, 18));
+        assertEquals(15, solution(30, 15));
+        assertEquals(10, solution(30, 20));
     }
 
     public int solution(int a, int b) {
