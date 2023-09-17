@@ -1,10 +1,21 @@
 package dev.kkkkkksssssaaaa.practice.algorithm.lv2;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.PriorityQueue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // 최솟값 만들기
 class MakeMinimum {
+
+    @Test
+    void doTest() {
+        assertEquals(29, solution(new int[]{1, 4, 2}, new int[]{5, 4, 4}));
+        assertEquals(29, solution2(new int[]{1, 4, 2}, new int[]{5, 4, 4}));
+    }
 
     /**
      * a, b 는 길이가 같은 배열이다.
@@ -23,6 +34,24 @@ class MakeMinimum {
 
         for (int i = 0; i < sortByAscA.length; i++) {
             sum += sortByAscA[i] * sortByDescB[i];
+        }
+
+        return sum;
+    }
+
+    public int solution2(int[] a, int[] b) {
+        PriorityQueue<Integer> sortedA = new PriorityQueue<>();
+        PriorityQueue<Integer> sortedB = new PriorityQueue<>(Collections.reverseOrder());
+
+        for (int i = 0; i < a.length; i++) {
+            sortedA.add(a[i]);
+            sortedB.add(b[i]);
+        }
+
+        int sum = 0;
+
+        while(!sortedA.isEmpty() && !sortedB.isEmpty()) {
+            sum += sortedA.poll() * sortedB.poll();
         }
 
         return sum;
