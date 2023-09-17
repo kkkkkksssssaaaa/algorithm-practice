@@ -17,6 +17,12 @@ class Q32 {
             return a;
         }
 
-        return a + solution(a + 1, b);
+        int result = a + solution(a + 1, b);
+
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        System.out.println("result = " + result);
+
+        return result;
     }
 }
