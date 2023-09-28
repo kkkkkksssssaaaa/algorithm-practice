@@ -23,51 +23,30 @@ class CollectBrakets {
     }
 
     public boolean solution(String s) {
-        Queue<Character> brackets = new LinkedList<>();
         Stack<Character> characterStack = new Stack<>();
 
-        for (char bracket : s.toCharArray()) {
-            brackets.add(bracket);
-        }
-
-        boolean result = true;
-
-        while(brackets.size() > 0 && result) {
-            Character character = brackets.poll();
-
-            if (isOpen(character)) {
-                characterStack.push(character);
-
-                if (brackets.isEmpty()) {
-                    result = false;
-                }
-            }
-
-            if (isClose(character)) {
-                if (characterStack.isEmpty()) {
-                    result = false;
-                } else {
-                    Character popped = characterStack.pop();
-
-                    if (isClose(popped)) {
-                        result = false;
-                    }
-                }
-            }
-        }
-
-        if (characterStack.size() > 0) {
+        if (isClose(s.charAt(0))) {
             return false;
-        } else {
-            return result;
         }
+
+        for (char bracket : s.toCharArray()) {
+            if (isOpen(bracket)) {
+                characterStack.push(bracket);
+            } else {
+                if (!characterStack.isEmpty()) {
+                    characterStack.pop();
+                }
+            }
+        }
+
+        return characterStack.size() == 0;
     }
 
-    private boolean isOpen(Character s) {
-        return s.equals('(');
+    private boolean isOpen(char s) {
+        return s == '(';
     }
 
-    private boolean isClose(Character s) {
-        return s.equals(')');
+    private boolean isClose(char s) {
+        return s == ')';
     }
 }
