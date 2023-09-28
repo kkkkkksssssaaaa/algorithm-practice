@@ -13,7 +13,8 @@ class TargetNumber {
         assertEquals(2, solution(new int[]{4, 1, 2, 1}, 4));
     }
 
-    static int result = 0;
+    int result = 0;
+
     public int solution(int[] numbers, int target) {
         result = 0;
 
@@ -21,7 +22,7 @@ class TargetNumber {
         return result;
     }
 
-    private static void dfs(int index, int[] num, int target, int sum) {
+    private void dfs(int index, int[] num, int target, int sum) {
         if(index == num.length) {
             if(target == sum) {
                 result++;
