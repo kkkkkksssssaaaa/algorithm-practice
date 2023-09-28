@@ -19,6 +19,7 @@ class CollectBrakets {
         assertTrue(solution("(())()"));
         assertFalse(solution(")()("));
         assertFalse(solution("(()("));
+        assertFalse(solution("(((((((((((((((((((((((((((((()"));
     }
 
     public boolean solution(String s) {
@@ -53,6 +54,10 @@ class CollectBrakets {
                     }
                 }
             }
+        }
+
+        if (characterStack.size() > 0) {
+            return false;
         }
 
         return result;
