@@ -58,9 +58,9 @@ class CollectBrakets {
 
         if (characterStack.size() > 0) {
             return false;
+        } else {
+            return result;
         }
-
-        return result;
     }
 
     private boolean isOpen(Character s) {
