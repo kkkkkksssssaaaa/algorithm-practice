@@ -9,15 +9,12 @@ class Q1_2 {
         Scanner in = new Scanner(System.in);
         String input = in.next();
         StringBuilder sb = new StringBuilder();
-        int lowerStart = 97;
-        int upperStart = 65;
-        int value = lowerStart - upperStart;
 
         for (char c : input.toCharArray()) {
-            if (c >= upperStart && c < lowerStart) {
-                sb.append((char) (c + value));
+            if (Character.isUpperCase(c)) {
+                sb.append(Character.toLowerCase(c));
             } else {
-                sb.append((char) (c - value));
+                sb.append(Character.toUpperCase(c));
             }
         }
 
