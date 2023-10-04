@@ -18,11 +18,8 @@ class Q1_3 {
     public String solution(String sentence) {
         int splitLength = sentence.split(" ").length;
         int longestIndex = 0;
-        String[] wordArray = new String[splitLength];
 
         for (int i = 0; i < splitLength; i++) {
-            wordArray[i] = sentence.split(" ")[i];
-
             if (sentence.split(" ")[i].length() > sentence.split(" ")[longestIndex].length()) {
                 longestIndex = i;
             }
