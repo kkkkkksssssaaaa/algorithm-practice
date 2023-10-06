@@ -38,22 +38,8 @@ class Q1_4 {
 
         for (int i = 0; i < count; i++) {
             String input = in.next();
-            Stack<Character> stack = new Stack<>();
 
-            for (char c : input.toCharArray()) {
-                stack.push(c);
-            }
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int j = 0; j < input.length(); j++) {
-                sb.append(stack.pop());
-            }
-
-            result[i] = sb.toString();
-        }
-
-        for (int i = 0; i < result.length; i++) {
+            result[i] = new StringBuilder(input).reverse().toString();
             System.out.println(result[i]);
         }
 
