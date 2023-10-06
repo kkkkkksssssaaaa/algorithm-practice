@@ -12,18 +12,21 @@ class Q1_7 {
     @Test
     void doTest() {
         assertEquals("YES", solution("gooG"));
+        assertEquals("NO", solution("gooGa"));
     }
 
     public static String solution(String input) {
         input = input.toLowerCase();
 
-        String reverseString = new StringBuilder(input).reverse().toString();
+        int length = input.length();
 
-        if (input.equals(reverseString)) {
-            return "YES";
-        } else {
-            return "NO";
+        for (int i = 0; i < length/2; i++) {
+            if (input.charAt(i) != input.charAt(length - i - 1)) {
+                return "NO";
+            }
         }
+
+        return "YES";
     }
 
     public static void main(String[] args) {
