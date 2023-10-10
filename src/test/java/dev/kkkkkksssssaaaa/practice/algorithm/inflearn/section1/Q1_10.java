@@ -15,38 +15,37 @@ class Q1_10 {
     }
 
     public static String solution(String input, String target) {
-        String[] result = new String[input.length()];
+        int[] result = new int[input.length()];
         char[] inputToCharArray = input.toCharArray();
         char targetToChar = target.toCharArray()[0];
 
+        int distance = input.length() + 1;
+
         for (int i = 0; i < inputToCharArray.length; i++) {
-            char thisChar = inputToCharArray[i];
-            int left = Integer.MAX_VALUE;
-            int right = Integer.MAX_VALUE;
-
-            if (thisChar == targetToChar) {
-                left = 0;
-                right = 0;
-            } else {
-                for (int j = i; j < inputToCharArray.length; j++) {
-                    if (targetToChar == inputToCharArray[j]) {
-                        right = j - i;
-                        j = inputToCharArray.length;
-                    }
-                }
-
-                for (int j = i; j > 0; j--) {
-                    if (targetToChar == inputToCharArray[j]) {
-                        left = i - j;
-                        j = 0;
-                    }
-                }
+            if (inputToCharArray[i] == targetToChar) {
+                distance = 0;
             }
 
-            result[i] = String.valueOf(Math.min(left, right));
+            result[i] = distance;
+            distance++;
         }
 
-        return String.join(" ", result);
+        for (int i = inputToCharArray.length - 1; i >= 0; i--) {
+            if (inputToCharArray[i] == targetToChar) {
+                distance = 0;
+            }
+
+            result[i] = Math.min(distance, result[i]);
+            distance++;
+        }
+
+        String[] toStringArray = new String[input.length()];
+
+        for (int i = 0; i < result.length; i++) {
+            toStringArray[i] = String.valueOf(result[i]);
+        }
+
+        return String.join(" ", toStringArray);
     }
 
     public static void main(String[] args) {
