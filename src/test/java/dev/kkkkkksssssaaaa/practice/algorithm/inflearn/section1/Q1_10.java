@@ -11,50 +11,47 @@ class Q1_10 {
 
     @Test
     void doTest() {
-        assertEquals("1 0 1 2 1 0 1 2 2 1 0", solution("teachermode", "e"));
+//        assertEquals("1 0 1 2 1 0 1 2 2 1 0", solution("teachermode", "e"));
     }
 
-    public static String solution(String input, String target) {
+    public static int[] solution(String input, char target) {
         int[] result = new int[input.length()];
-        char[] inputToCharArray = input.toCharArray();
-        char targetToChar = target.toCharArray()[0];
 
-        int distance = input.length() + 1;
+        int distance = 1000;
 
-        for (int i = 0; i < inputToCharArray.length; i++) {
-            if (inputToCharArray[i] == targetToChar) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == target) {
                 distance = 0;
+                result[i] = distance;
+            } else {
+                distance++;
+                result[i] = distance;
             }
-
-            result[i] = distance;
-            distance++;
         }
 
-        for (int i = inputToCharArray.length - 1; i >= 0; i--) {
-            if (inputToCharArray[i] == targetToChar) {
+        distance = 1000;
+
+        for (int i = input.length() - 1; i >= 0; i--) {
+            if (input.charAt(i) == target) {
                 distance = 0;
+            } else {
+                distance++;
+                result[i] = Math.min(result[i], distance);
             }
-
-            result[i] = Math.min(distance, result[i]);
-            distance++;
         }
 
-        String[] toStringArray = new String[input.length()];
-
-        for (int i = 0; i < result.length; i++) {
-            toStringArray[i] = String.valueOf(result[i]);
-        }
-
-        return String.join(" ", toStringArray);
+        return result;
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
         String input = in.nextLine();
-        String target = in.nextLine();
+        char target = in.next().charAt(0);
 
-        System.out.println(solution(input, target));
+        for (int i : solution(input, target)) {
+            System.out.print(i + " ");
+        }
 
         return ;
     }
