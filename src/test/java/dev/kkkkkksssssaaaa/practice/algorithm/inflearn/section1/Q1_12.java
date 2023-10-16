@@ -15,18 +15,16 @@ class Q1_12 {
     }
 
     public static String solution(int length, String input) {
-        int splitLength = 7;
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < length; i++) {
-            StringBuilder builder = new StringBuilder();
-
-            for (int j = splitLength * i; j < splitLength * (i + 1); j++) {
-                builder.append(parse(input.charAt(j)));
-            }
-
-            int parseRadix10 = Integer.valueOf(builder.toString(), 2);
-            result.append((char) parseRadix10);
+            String temp =
+                input.substring(0, 7)
+                    .replace("#", "1")
+                    .replace("*", "0");
+            int num = Integer.parseInt(temp, 2);
+            result.append((char) num);
+            input = input.substring(7);
         }
 
         return result.toString();
