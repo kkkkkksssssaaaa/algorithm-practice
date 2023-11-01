@@ -32,10 +32,9 @@ class Q2_1 {
         Scanner in = new Scanner(System.in);
 
         int inputLength = in.nextInt();
-        int n = in.nextInt();
-        int[] arr = new int[n];
+        int[] arr = new int[inputLength];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < inputLength; i++) {
             arr[i] = in.nextInt();
         }
 
