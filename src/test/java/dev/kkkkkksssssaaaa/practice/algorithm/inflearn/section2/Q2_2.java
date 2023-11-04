@@ -2,7 +2,6 @@ package dev.kkkkkksssssaaaa.practice.algorithm.inflearn.section2;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
